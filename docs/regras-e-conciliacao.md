@@ -1,0 +1,10 @@
+
+# Regras comerciais e conciliação
+
+- **Almoço.** A data comercial usa o fuso da empresa. No piloto, cada empresa opera o turno `LUNCH`. O horário é inclusivo no início e exclusivo no fim. O limite diário configurado se aplica à empresa, inclusive quando houver mais de um caixa. Estornos liberam a baixa e os limites.
+- **Subsídio.** O servidor soma o subsídio configurado de cada item, limitado ao preço correspondente. O operador pode combinar almoço e extras ou cobrar só extras. A confirmação exige que a cotação ainda corresponda a preços, descontos, quantidades e data comercial vigentes.
+- **Limites.** Regras diária e mensal se aplicam à soma líquida de pedidos ativos, considerando todos os métodos. Um limite vazio é ilimitado. Limites e subsídios reais serão homologados com o RH.
+- **Liquidação.** O almoço, descontado o subsídio, vai para folha. Folha exige elegibilidade específica para almoço com cobrança. Extras, descontados os respectivos subsídios, são pagos no caixa. Dinheiro exige confirmação de recebimento. Cartão e PIX exigem também a referência informada pelo operador. Pedido com total zero é coberto pelo subsídio.
+- **Consulta de gastos.** O caixa mostra o total de hoje e do mês da unidade, com parcelas em folha e no caixa, e a lista de extras pelo valor líquido da compra. A consulta usa os métodos efetivamente registrados, inclusive para pedidos anteriores à regra atual, e exclui estornos.
+- **Estorno.** Um gerente ou administrador informa motivo. Dinheiro, cartão e PIX exigem registro da devolução. A transação original preserva itens e valores, e a API registra o estorno e o evento compensatório. Estorno local e entrega da compensação têm estados distintos.
+- **Conciliação.** O relatório agrupa pedidos pela data comercial original. Valores líquidos excluem pedidos estornados. Para fechar o período, use os totais por método, inspecione referências de pagamento e confira a fila de folha. Se um período já foi fechado externamente, negocie a competência dos ajustes com RH.

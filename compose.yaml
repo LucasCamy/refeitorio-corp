@@ -1,0 +1,19 @@
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: refeitorio
+      POSTGRES_DB: refeitorio
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Defina DB_PASSWORD}
+    ports:
+      - "127.0.0.1:${DB_PORT:-55432}:5432"
+    volumes:
+      - refeitorio_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "refeitorio", "-d", "refeitorio"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+volumes:
+  refeitorio_pg:
